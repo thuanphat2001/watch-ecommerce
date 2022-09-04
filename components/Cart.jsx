@@ -23,6 +23,7 @@ const Cart = () => {
     toggleCartItemQuantity,
     handleRemove,
   } = useStateContext();
+  // https://stripe.com/docs/js/checkout/redirect_to_checkout
   const handleCheckout = async () => {
     const stripe = await getStripe();
 
