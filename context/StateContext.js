@@ -47,6 +47,7 @@ export const StateContext = ({ children }) => {
       (prevTotalQuantities) => prevTotalQuantities - foundProduct.quantity
     );
     setCartItems(newCartItems);
+    toast.error(`${qty} ${product.name} remove from the cart.`);
   };
   const toggleCartItemQuantity = (id, value) => {
     foundProduct = cartItems.find((item) => item._id === id);
