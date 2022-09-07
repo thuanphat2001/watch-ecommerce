@@ -18,7 +18,7 @@ const FooterBanner = ({
   },
 }) => {
   return (
-    <div className="footer-banner-container">
+    <footer className="footer-banner-container">
       <div className="banner-desc">
         <div className="left">
           <p>{discount}</p>
@@ -36,7 +36,7 @@ const FooterBanner = ({
         </div>
         <img src={urlFor(image)} className="footer-banner-image" />
       </div>
-    </div>
+    </footer>
   );
 };
 
