@@ -1,7 +1,8 @@
 :root {
-  --primary-color: #f02d34;
+  --primary-color: #e73c37;
   --white-color: white;
   --text-color: #324d67;
+  --border-color: gray;
 }
 
 html,
@@ -74,7 +75,7 @@ span.text-red {
   margin-left: 6px;
 }
 .logo {
-  color: gray;
+  color: var(--primary-color);
   font-size: 18px;
 }
 .cart-icon,
@@ -238,7 +239,7 @@ span.text-red {
   border-radius: 15px;
   padding: 10px 16px;
   background-color: var(--white-color);
-  color: red;
+  color: var(--primary-color);
   border: none;
   margin-top: 40px;
   font-size: 18px;
@@ -496,7 +497,7 @@ span.text-red {
 }
 .buttons .add-to-cart {
   padding: 10px 20px;
-  border: 1px solid #f02d34;
+  border: 1px solid var(--border-color);
   margin-top: 40px;
   font-size: 18px;
   font-weight: 500;
@@ -528,7 +529,7 @@ span.text-red {
   transform: scale(1.1, 1.1);
 }
 .quantity-desc {
-  border: 1px solid gray;
+  border: 1px solid var(--border-color);
   padding: 6px;
 }
 .quantity-desc span {
@@ -540,8 +541,8 @@ span.text-red {
   color: var(--primary-color);
 }
 .quantity-desc .num {
-  border-left: 1px solid gray;
-  border-right: 1px solid gray;
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
   font-size: 20px;
 }
 .quantity-desc .plus {

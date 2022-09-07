@@ -13,7 +13,6 @@ const Success = () => {
     setTotalPrice(0), setTotalQuantities(0);
     runFireworks();
   }, []);
-  const [order, setOrder] = useState(null);
   return (
     <div className="success-wrapper">
       <div className="success">
