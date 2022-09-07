@@ -108,6 +108,24 @@ span.text-red {
   text-align: center;
   font-weight: 600;
 }
+
+.navbar-list {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  margin-left: auto;
+}
+.nav-item {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: linear-gradient(var(--primary-color) 0 0) 0 100% / var(--d, 0) 3px
+    no-repeat;
+  transition: 0.5s;
+}
+.nav-item:hover {
+  --d: 100%;
+}
 .products-container {
   display: flex;
   flex-wrap: wrap;
