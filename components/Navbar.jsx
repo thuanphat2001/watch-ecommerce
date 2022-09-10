@@ -45,9 +45,18 @@ const Navbar = () => {
           </a>
         </Link>
       </ul>
-      <button type="button" className="search-icon" onClick="">
-        <AiOutlineSearch />
-      </button>
+      <div className="input-wrapper">
+        <form className="input-group">
+          <input
+            type="search"
+            className="form-control"
+            placeholder="Search your product"
+          />
+          <button type="button" className="search-icon" onClick="">
+            <AiOutlineSearch />
+          </button>
+        </form>
+      </div>
       {/* Start Cart */}
       <button
         type="button"

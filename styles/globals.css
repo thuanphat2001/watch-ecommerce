@@ -96,6 +96,20 @@ span.text-red {
 .search-icon:hover {
   transform: scale(1.1, 1.1);
 }
+
+.input-wrapper {
+}
+
+.form-control {
+  position: relative;
+  top: -7px;
+  padding: 4px;
+  color: #6f6f6f;
+  font-size: 14px;
+  border: 1px solid #ebebeb;
+  background-color: #f3f3f3;
+}
+
 .cart-item-qty {
   position: absolute;
   right: -8px;
@@ -113,7 +127,7 @@ span.text-red {
   display: flex;
   gap: 32px;
   list-style: none;
-  margin-left: auto;
+  margin: 0 auto;
 }
 .nav-item {
   font-size: 16px;
@@ -642,24 +656,30 @@ span.text-red {
 }
 
 @media screen and (max-width: 800px) {
+  .logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
   .hero-banner-container {
     height: 560px;
   }
   .hero-banner-image {
-    width: 77%;
-    height: 62%;
-    top: -2%;
-    right: -6%;
+    width: 230px;
+    height: 230px;
+    top: 34%;
+    right: 2%;
   }
   .footer-banner-container {
     height: 560px;
     margin-top: 80px;
   }
   .footer-banner-image {
-    width: 68%;
+    width: 230px;
     left: 38%;
-    top: 6%;
-    height: 53%;
+    top: 12%;
+    height: 230px;
   }
   .banner-desc .left h3 {
     font-weight: 900;
@@ -692,8 +712,11 @@ span.text-red {
     font-size: 40px;
   }
   .hero-banner-container button {
-    margin-top: 90px;
+    /* margin-top: 90px; */
     z-index: 10000;
+  }
+  .banner-desc button {
+    margin: 24px 0 24px;
   }
   .desc {
     bottom: 60px;
@@ -780,5 +803,12 @@ span.text-red {
   .btn-container {
     width: 300px;
     margin: auto;
+  }
+  .navbar-list,
+  .input-wrapper {
+    display: none;
+  }
+  .cart-icon {
+    margin-left: auto;
   }
 }
