@@ -14,9 +14,9 @@ const Navbar = () => {
         <Link href="/">E-Commerce Watch</Link>
       </p>
       <ul className="navbar-list">
-        <Link href="/brand">
+        <Link href="/product">
           <a className="nav-item">
-            <li>Brand</li>
+            <li>Product</li>
           </a>
         </Link>
         <Link href="/">
