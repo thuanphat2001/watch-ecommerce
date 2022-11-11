@@ -2,11 +2,11 @@ import React from "react";
 import { client } from "../lib/client";
 import { Product } from "../components";
 
-const men = ({ products }) => {
+const women = ({ products }) => {
   return (
     <div className="products-container">
       {products
-        ?.filter((product) => product.gender == true)
+        ?.filter((product) => product.gender == false)
         .map((product) => (
           <>
             <Product key={product._id} product={product} />
@@ -28,4 +28,4 @@ export const getServerSideProps = async () => {
   };
 };
 
-export default men;
+export default women;
