@@ -5,19 +5,35 @@ import _, { set } from "lodash";
 import { Cart } from "./";
 import { useStateContext } from "../context/StateContext";
 import { client, urlFor } from "../lib/client";
+import { useRouter } from "next/router";
+import { borderColor } from "@mui/system";
+import { grey } from "@mui/material/colors";
 
 const Navbar = () => {
+  const router = useRouter();
   const { showCart, setShowCart, totalQuantities } = useStateContext();
   const [query, setQuery] = useState(null);
   const [data, setData] = useState(null);
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [isSearchHover, setIsSearchHover] = useState(false);
 
-  const handleSearchDebounce = _.debounce((event) => {
-    const { value } = event.target;
-    setQuery(`*[_type == "product" && slug.current match "${value}*"]`);
-  }, 800);
   useEffect(() => {
     query && client.fetch(query).then((result) => setData(result));
   }, [query]);
+
+  const handleSearchDebounce = _.debounce((event) => {
+    const { value } = event.target;
+    if (value.length == 0) {
+      setData([]);
+      return;
+    }
+    setQuery(`*[_type == "product" && slug.current match "${value}*"]`);
+  }, 800);
+
+  function onNavigate(product) {
+    router.push(`/product/${product.slug.current}`);
+    setIsSearchFocused(false);
+  }
 
   return (
     <header className="navbar-container">
@@ -63,22 +79,52 @@ const Navbar = () => {
             className="form-control"
             placeholder="Search your product"
             onChange={handleSearchDebounce}
+            onFocus={() => setIsSearchFocused(true)}
+            onBlur={() => !isSearchHover && setIsSearchFocused(false)}
           />
           <button type="button" className="search-icon" onClick="">
             <AiOutlineSearch />
           </button>
         </form>
-        <div style={{ position: "absolute" }}>
-          {data?.map((item) => {
-            return (
-              <>
-                <img src={urlFor(item.image)[0]} />
-                <h2>{item.name}</h2>
-                <h2>{item.price}</h2>
-              </>
-            );
-          })}
-        </div>
+        {isSearchFocused && (
+          <div
+            style={{
+              position: "absolute",
+              zIndex: 10,
+              width: "100%",
+              backgroundColor: "white",
+              border: "1px solid grey",
+              borderRadius: "10px",
+            }}
+            onMouseOver={() => setIsSearchHover(true)}
+            onMouseLeave={() => setIsSearchHover(false)}
+          >
+            {data?.map((item) => {
+              return (
+                <div
+                  onClick={() => onNavigate(item)}
+                  style={{
+                    padding: "10px",
+                    borderTop: "1px",
+                    borderBottom: "1px",
+                    borderColor: "grey",
+                  }}
+                >
+                  <div style={{ display: "flex" }}>
+                    <img
+                      src={urlFor(item.image[0])}
+                      width={50}
+                      height={50}
+                      className="product-image"
+                    />
+                    <h2>{item.name}</h2>
+                  </div>
+                  <h2>${item.price}</h2>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
       {/* Start Cart */}
       <button
