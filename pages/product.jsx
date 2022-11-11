@@ -16,6 +16,7 @@ const Home = ({ products, bannerData }) => {
           <>
             <Product key={product._id} product={product} />
             <Product key={product._id} product={product} />
+            <Product key={product._id} product={product} />
           </>
         ))}
       </div>
