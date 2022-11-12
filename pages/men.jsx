@@ -1,18 +1,21 @@
 import React from "react";
 import { client } from "../lib/client";
-import { Product } from "../components";
+import { HeroBanner, Product } from "../components";
 
-const men = ({ products }) => {
+const men = ({ products, bannerData }) => {
   return (
-    <div className="products-container">
-      {products
-        ?.filter((product) => product.gender == true)
-        .map((product) => (
-          <>
-            <Product key={product._id} product={product} />
-          </>
-        ))}
-    </div>
+    <>
+      <HeroBanner heroBanner={bannerData.length && bannerData[1]} />
+      <div className="products-container">
+        {products
+          ?.filter((product) => product.gender == true)
+          .map((product) => (
+            <>
+              <Product key={product._id} product={product} />
+            </>
+          ))}
+      </div>
+    </>
   );
 };
 

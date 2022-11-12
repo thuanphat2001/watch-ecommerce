@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { AiOutlineShopping, AiOutlineSearch } from "react-icons/ai";
-import _, { set } from "lodash";
+import {
+  AiOutlineShopping,
+  AiOutlineSearch,
+  AiOutlineMenu,
+} from "react-icons/ai";
+import _ from "lodash";
 import { Cart } from "./";
 import { useStateContext } from "../context/StateContext";
 import { client, urlFor } from "../lib/client";
 import { useRouter } from "next/router";
-import { borderColor } from "@mui/system";
-import { grey } from "@mui/material/colors";
 
 const Navbar = () => {
   const router = useRouter();
@@ -37,52 +39,53 @@ const Navbar = () => {
 
   return (
     <header className="navbar-container">
+      {/* Menu Button  */}
+      {/* <button class="menu-btn">
+        <AiOutlineMenu />
+      </button> */}
+
       <p className="logo">
         <Link href="/">E-Commerce Watch</Link>
       </p>
       <ul className="navbar-list">
         <Link href="/product">
           <a className="nav-item">
-            <li>Product</li>
+            <li>Sản phẩm</li>
           </a>
         </Link>
         <Link href="/men">
           <a className="nav-item">
-            <li>Men</li>
+            <li>Nam</li>
           </a>
         </Link>
         <Link href="/women">
           <a className="nav-item">
-            <li>Women</li>
-          </a>
-        </Link>
-        <Link href="/collection">
-          <a className="nav-item">
-            <li>Collection</li>
+            <li>Nữ</li>
           </a>
         </Link>
         <Link href="/news">
           <a className="nav-item">
-            <li>News</li>
+            <li>Tin tức</li>
           </a>
         </Link>
-        <Link href="/about Us">
+        <Link href="/about">
           <a className="nav-item">
-            <li>About Us</li>
+            <li>Về chúng tôi</li>
           </a>
         </Link>
       </ul>
+
       <div className="input-wrapper" style={{ position: "relative" }}>
         <form className="input-group">
           <input
             type="search"
             className="form-control"
-            placeholder="Search your product"
+            placeholder="Tìm sản phẩm"
             onChange={handleSearchDebounce}
             onFocus={() => setIsSearchFocused(true)}
             onBlur={() => !isSearchHover && setIsSearchFocused(false)}
           />
-          <button type="button" className="search-icon" onClick="">
+          <button type="button" className="search-icon">
             <AiOutlineSearch />
           </button>
         </form>
@@ -93,8 +96,8 @@ const Navbar = () => {
               zIndex: 10,
               width: "100%",
               backgroundColor: "white",
-              border: "1px solid grey",
               borderRadius: "10px",
+              border: "1px solid #ebebeb",
             }}
             onMouseOver={() => setIsSearchHover(true)}
             onMouseLeave={() => setIsSearchHover(false)}
@@ -104,22 +107,38 @@ const Navbar = () => {
                 <div
                   onClick={() => onNavigate(item)}
                   style={{
-                    padding: "10px",
-                    borderTop: "1px",
-                    borderBottom: "1px",
-                    borderColor: "grey",
+                    color: "gray",
+                    cursor: "pointer",
+                    transition: "transform 0.4s ease",
+                    border: "none",
+                    backgroundColor: "transparent",
                   }}
                 >
-                  <div style={{ display: "flex" }}>
+                  <div style={{ display: "flex", marginTop: "10px" }}>
                     <img
                       src={urlFor(item.image[0])}
-                      width={50}
-                      height={50}
+                      width={100}
+                      height={100}
                       className="product-image"
                     />
-                    <h2>{item.name}</h2>
+                    <p
+                      style={{
+                        color: " var(--text-color)",
+                      }}
+                    >
+                      {item.name}
+                    </p>
                   </div>
-                  <h2>${item.price}</h2>
+                  <h4
+                    style={{
+                      color: "black",
+                      marginLeft: "100px",
+                      top: "50%",
+                      transform: " translateY(-150%)",
+                    }}
+                  >
+                    ${item.price}
+                  </h4>
                 </div>
               );
             })}

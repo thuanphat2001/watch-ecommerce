@@ -4,21 +4,24 @@ import { client } from "../lib/client";
 import { Product, FooterBanner, HeroBanner } from "../components";
 
 const Home = ({ products, bannerData }) => {
-  console.log(products);
   return (
     <>
-      <HeroBanner heroBanner={bannerData.length && bannerData[1]} />
+      <HeroBanner heroBanner={bannerData.length && bannerData[2]} />
       <div className="products-heading">
         <h2>Best Selling Product</h2>
         <p>lorem ipsum dolor sit amet, consectetur adip</p>
       </div>
 
       <div className="products-container">
-        {products?.map((product) => (
-          <Product key={product._id} product={product} />
-        ))}
+        {products
+          ?.filter((product) => product.bestseller == true)
+          .map((product) => (
+            <>
+              <Product key={product._id} product={product} />
+            </>
+          ))}
       </div>
-      <FooterBanner footerBanner={bannerData && bannerData[1]} />
+      <FooterBanner footerBanner={bannerData && bannerData[0]} />
     </>
   );
 };

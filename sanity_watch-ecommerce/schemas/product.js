@@ -41,5 +41,10 @@ export default {
       title: "Gender",
       type: "boolean",
     },
+    {
+      name: "bestseller",
+      title: "BestSeller",
+      type: "boolean",
+    },
   ],
 };
