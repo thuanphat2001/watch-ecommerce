@@ -13,8 +13,8 @@ export default async function handler(req, res) {
         payment_method_types: ["card"],
         billing_address_collection: "auto",
         shipping_options: [
-          { shipping_rate: "shr_1LdEvLAT65oJst2EK0D5E1mg" },
-          { shipping_rate: "shr_1LdExEAT65oJst2EJSyB4bmJ" },
+          { shipping_rate: "shr_1M4GaAAT65oJst2EUTPh18A8" },
+          { shipping_rate: "shr_1M4GbvAT65oJst2E8MdefKSc" },
         ],
         line_items: req.body.map((item) => {
           const img = item.image[0].asset._ref;
@@ -26,12 +26,12 @@ export default async function handler(req, res) {
             .replace("-webp", ".webp");
           return {
             price_data: {
-              currency: "usd",
+              currency: "vnd",
               product_data: {
                 name: item.name,
                 images: [newImage],
               },
-              unit_amount: item.price * 100,
+              unit_amount: item.price,
             },
             adjustable_quantity: {
               enabled: true,
